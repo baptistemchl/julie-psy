@@ -1,0 +1,339 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+
+const title = "Julie – Psychopraticienne à votre écoute";
+const description =
+  "Séances d’accompagnement thérapeutique à distance ou en cabinet, dans un cadre bienveillant et confidentiel.";
+---
+
+<BaseLayout {title} {description}>
+  <!-- Section Hero -->
+  <section id="hero" class="text-center py-10 bg-[#F5F5F7]">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-serif font-semibold leading-tight">
+        Retrouver l’équilibre, renouer avec soi.
+      </h1>
+      <p class="mt-6 text-lg text-grayish leading-relaxed">
+        Une approche intégrative et holistique<br />
+        pour un mieux-être durable, dans un espace d’écoute sincère.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row justify-center">
+        <!-- 
+          On met href="/" et data-target="contact-form", 
+          et on empêche la navigation native via onclick="..."
+        -->
+        <Button
+          href="/"
+          data-target="contact-form"
+          onclick="event.preventDefault()"
+          colorClass="bg-primary text-white"
+        >
+          Prendre rendez-vous
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section id="apropos" class="py-10 bg-white text-center">
+    <div class="max-w-5xl mx-auto px-4">
+      <img
+        src="/illustrations/julie.avif"
+        alt="Julie – Psychopraticienne"
+        class="w-32 h-auto object-cover rounded-full mx-auto mb-6 shadow-subtle"
+      />
+      <h2 class="text-2xl font-serif font-semibold">Qui suis-je ?</h2>
+      <p class="mt-4 text-grayish text-lg leading-relaxed">
+        Je suis Julie, psychopraticienne diplômée, spécialisée dans
+        l'accompagnement des personnes confrontées à des difficultés
+        émotionnelles, relationnelles ou à des troubles addictifs. Formée en
+        <strong>hypnose thérapeutique</strong> et en
+        <strong>thérapies cognitivo-comportementales (TCC)</strong>, j’aide
+        adultes et jeunes adultes à retrouver un équilibre intérieur durable.
+        Mon approche est humaniste, bienveillante, et centrée sur la personne :
+        chaque parcours est unique, chaque écoute l’est aussi.
+      </p>
+    </div>
+  </section>
+
+  <!-- Méthodes -->
+  <section id="approche" class="py-10 bg-[#F5F5F7]">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-serif font-semibold mb-10">Mon approche</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div
+          class="bg-white p-6 rounded-xl shadow-subtle hover:shadow-md transition"
+        >
+          <h3 class="text-lg font-semibold mb-2">Écoute active</h3>
+          <p class="text-grayish">
+            Chaque séance ouvre un espace de parole libre, accueillie dans une
+            présence attentive, respectueuse et profondément humaine.<br />
+            <em class="block mt-3 text-sm text-gray-600">
+              “Parler est un besoin, écouter est un art.” – Goethe
+            </em>
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-xl shadow-subtle hover:shadow-md transition"
+        >
+          <h3 class="text-lg font-semibold mb-2">
+            Approche intégrative et holistique
+          </h3>
+          <p class="text-grayish">
+            J’adapte les outils thérapeutiques à votre singularité, en combinant
+            différentes méthodes pour prendre en compte l’ensemble de votre être
+            : corps, esprit, émotions, histoire.<br />
+            <em class="block mt-3 text-sm text-gray-600">
+              “Ce qui est nécessaire pour changer une personne, c’est de changer
+              sa conscience de soi.” – Abraham Maslow
+            </em>
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-xl shadow-subtle hover:shadow-md transition"
+        >
+          <h3 class="text-lg font-semibold mb-2">
+            Accompagnement personnalisé
+          </h3>
+          <p class="text-grayish">
+            Chaque chemin est unique : je vous accompagne à votre rythme, en
+            respectant vos besoins, vos forces et votre histoire.<br />
+            <em class="block mt-3 text-sm text-gray-600">
+              “Le chemin se construit en marchant.” – Antonio Machado
+            </em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Thérapies proposées -->
+  <section id="therapies" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-serif font-semibold mb-12">
+        Thérapies proposées
+      </h2>
+      <div class="grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Hypnose -->
+        <div
+          class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
+        >
+          <img
+            src="/illustrations/1.avif"
+            alt="Séance d'hypnose thérapeutique"
+            class="h-48 w-full object-cover rounded-xl mb-4"
+          />
+          <h3 class="text-2xl font-semibold mb-2">Hypnose thérapeutique</h3>
+          <p class="text-grayish leading-relaxed mb-4">
+            Une méthode douce pour agir sur le stress, les phobies, la douleur
+            et les croyances limitantes.
+          </p>
+          <details class="mt-4 text-center">
+            <summary
+              class="cursor-pointer font-medium underline text-primary block mx-auto"
+            >
+              Voir plus
+            </summary>
+            <div
+              class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
+            >
+              <p>
+                L'hypnose est un état modifié de conscience qui permet d'accéder
+                à vos ressources internes. Cette méthode douce et respectueuse
+                favorise le changement durable, en agissant sur les
+                comportements, les émotions ou les croyances limitantes.
+              </p>
+              <p>
+                Utilisée notamment pour gérer le stress, les phobies, les
+                douleurs chroniques ou les troubles anxieux, l'hypnose permet de
+                se reconnecter à soi, dans un cadre sécurisant.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- TCC -->
+        <div
+          class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
+        >
+          <img
+            src="/illustrations/2.avif"
+            alt="Thérapies cognitivo-comportementales"
+            class="h-48 w-full object-cover rounded-xl mb-4"
+          />
+          <h3 class="text-2xl font-semibold mb-2">
+            Thérapies Cognitivo-Comportementales
+          </h3>
+          <p class="text-grayish leading-relaxed mb-4">
+            Des outils concrets pour observer et transformer pensées et
+            comportements.
+          </p>
+          <details class="mt-4 text-center">
+            <summary
+              class="cursor-pointer font-medium underline text-primary block mx-auto"
+            >
+              Voir plus
+            </summary>
+            <div
+              class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
+            >
+              <p>
+                Les TCC sont des approches basées sur l'observation des pensées,
+                émotions et comportements. Elles permettent d'agir concrètement
+                sur ce qui vous freine ou vous fait souffrir.
+              </p>
+              <p>
+                Recommandées pour traiter l'anxiété, les TOC, la dépression ou
+                les troubles de l'estime de soi, les TCC vous aident à
+                développer de nouveaux schémas plus aidants.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Addictions -->
+        <div
+          class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
+        >
+          <img
+            src="/illustrations/3.avif"
+            alt="Accompagnement des addictions"
+            class="h-48 w-full object-cover rounded-xl mb-4"
+          />
+          <h3 class="text-2xl font-semibold mb-2">
+            Accompagnement des addictions
+          </h3>
+          <p class="text-grayish leading-relaxed mb-4">
+            Comprendre vos mécanismes, agir sur les déclencheurs et retrouver
+            votre autonomie.
+          </p>
+          <details class="mt-4 text-center">
+            <summary
+              class="cursor-pointer font-medium underline text-primary block mx-auto"
+            >
+              Voir plus
+            </summary>
+            <div
+              class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
+            >
+              <p>
+                Que ce soit pour une dépendance au tabac, à l’alcool, aux écrans
+                ou à une autre forme d’addiction, l’accompagnement thérapeutique
+                vous aide à comprendre les mécanismes de cette emprise et à en
+                sortir, sans culpabilité.
+              </p>
+              <p>
+                Ensemble, nous travaillons sur les causes profondes, les
+                déclencheurs émotionnels et la reconstruction d’une autonomie
+                intérieure.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section id="temoignages" class="py-20 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-serif font-semibold mb-10">
+        Ils m'ont fait confiance
+      </h2>
+      <div class="overflow-hidden relative">
+        <div class="flex animate-scroll-x space-x-8 w-max">
+          {
+            Array.from({ length: 2 }).map(() => (
+              <>
+                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                  <p class="text-grayish italic">
+                    "Grâce à l’accompagnement de Julie, j’ai pu me libérer
+                    progressivement d’une addiction qui me pesait depuis des
+                    années."
+                  </p>
+                  <p class="mt-4 text-sm font-medium text-dark">— Pauline R.</p>
+                </div>
+                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                  <p class="text-grayish italic">
+                    "Une écoute rare, une bienveillance constante. Julie m’a
+                    aidé à reprendre confiance en moi."
+                  </p>
+                  <p class="mt-4 text-sm font-medium text-dark">
+                    — Thibault M.
+                  </p>
+                </div>
+                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                  <p class="text-grayish italic">
+                    "Je ne pensais pas qu’un suivi thérapeutique pouvait être
+                    aussi humain. J’ai avancé à mon rythme, sans pression."
+                  </p>
+                  <p class="mt-4 text-sm font-medium text-dark">— Claire D.</p>
+                </div>
+              </>
+            ))
+          }
+        </div>
+        <div
+          class="absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-white to-transparent pointer-events-none"
+        >
+        </div>
+        <div
+          class="absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-white to-transparent pointer-events-none"
+        >
+        </div>
+      </div>
+
+      <style>
+        @keyframes scroll-x {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll-x {
+          animation: scroll-x 40s linear infinite;
+        }
+
+        /* Animation pour les détails */
+        details .toggle-content {
+          overflow: hidden;
+          height: 0;
+          transition: height 0.3s ease;
+        }
+      </style>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- script forcé côté client pour l’animation slide down/up -->
+<script is:inline type="module">
+  // Au chargement de la page, préparer l'animation
+  document.addEventListener("DOMContentLoaded", () => {
+    const detailsEls = document.querySelectorAll("details");
+    detailsEls.forEach((details) => {
+      const content = details.querySelector(".toggle-content");
+      if (!content) return;
+      content.style.height = details.open ? "auto" : "0px";
+      details.addEventListener("toggle", () => {
+        if (details.open) {
+          content.style.height = content.scrollHeight + "px";
+          content.addEventListener(
+            function handler() {
+              content.style.height = "auto";
+              content.removeEventListener("transitionend", handler);
+            },
+            { once: true }
+          );
+        } else {
+          content.style.height = content.scrollHeight + "px";
+          requestAnimationFrame(() => {
+            content.style.height = "0px";
+          });
+        }
+      });
+    });
+  });
+</script>

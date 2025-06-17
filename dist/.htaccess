@@ -1,0 +1,65 @@
+# ────────────────────────────────────────────────────
+# .htaccess optimisé – Astro.js statique + Apache
+# Domaine : www.julie-psy.fr
+# ────────────────────────────────────────────────────
+
+RewriteEngine On
+RewriteBase /
+
+# 1) Force HTTPS + www (canonical non-www → www)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.julie-psy\.fr$ [NC]
+RewriteRule ^ https://www.julie-psy.fr%{REQUEST_URI} [L,R=301]
+
+# 2) Empêcher l’accès direct au cgi-bin
+RewriteRule ^cgi-bin/ - [F,L]
+
+# 3) Fichiers par défaut
+DirectoryIndex index.html
+
+# 4) Sécurité HTTP Headers
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+  Header unset ETag
+</IfModule>
+FileETag None
+
+# 5) Compression GZIP
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml application/xml
+  DeflateFilterNote ratio
+  DeflateCompressionLevel 6
+</IfModule>
+
+# 6) Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/* "access plus 1 year"
+  ExpiresByType font/*  "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# 7) Bloquer lectures de fichiers sensibles
+<FilesMatch "\.(htaccess|htpasswd|env|ini|phps|log)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# 8) Désactiver listings de répertoires
+Options -Indexes
+
+# 9) SPA fallback (pour client-side routing)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

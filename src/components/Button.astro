@@ -1,0 +1,49 @@
+---
+interface Props {
+  /** URL si on veut un lien ; sinon on obtient un <button> */
+  href?: string;
+  /** pour un bouton de formulaire : 'button' | 'submit' | 'reset' */
+  type?: 'button' | 'submit' | 'reset';
+  /** classes supplémentaires de couleur */
+  colorClass?: string;
+  /** pour autoriser des attributs arbitraires (data-target, aria-*, onclick, etc.) */
+  [key: string]: any;
+}
+const {
+  href,
+  type = href ? undefined : 'button', // par défaut 'button' si pas de href
+  colorClass = "bg-primary text-dark",
+  ...rest
+} = Astro.props;
+---
+
+{/** si on a un href, on rend un <a> */}
+{href ? (
+  <a
+    href={href}
+    class={`
+      inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium
+      transition hover:opacity-90 ${colorClass}
+    `}
+    {...rest}
+  >
+    <!-- icône du bouton -->
+    <img src="/ico_button/ico_button.svg" alt="" class="w-5 h-5 invert" />
+    <!-- slot pour le contenu (texte, html, etc.) -->
+    <span><slot /></span>
+  </a>
+) : (
+  <button
+    type={type}
+    class={`
+      inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium
+      transition hover:opacity-90 ${colorClass}
+    `}
+    {...rest}
+  >
+    <!-- icône du bouton -->
+    <img src="/ico_button/ico_button.svg" alt="" class="w-5 h-5 invert" />
+    <!-- slot pour le contenu (texte, html, etc.) -->
+    <span><slot /></span>
+  </button>
+)}

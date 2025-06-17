@@ -1,0 +1,318 @@
+---
+// Layout principal pour le site Julie – Psychopraticienne
+// Gère l’en-tête, le pied de page, la navigation sans hash, et intègre la bannière de cookies
+import Button from "../components/Button.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+
+const {
+  title = "Julie – Psychopraticienne",
+  description = "Accompagnement thérapeutique pour un mieux-être durable.",
+  url = "https://www.julie-psy.fr",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph & Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/social-card.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/social-card.jpg" />
+
+    <title>{title}</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+
+    <!-- fade-in simple au chargement -->
+    <style>
+      body {
+        opacity: 0;
+        background-color: #f5f5f7; /* même couleur que le Hero */
+        transition: opacity 0.5s ease-in-out;
+      }
+      body.page-loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body class="bg-neutral text-dark font-sans antialiased">
+    <!-- Header sticky -->
+    <header
+      class="sticky top-0 w-full py-6 px-4 md:px-8 lg:px-16 bg-transparent z-50"
+    >
+      <div class="max-w-7xl mx-auto flex justify-center relative">
+        <div
+          class="inline-flex items-center space-x-6 bg-white/30 backdrop-blur-lg rounded-full px-6 py-2 shadow-sm"
+        >
+          <!-- Logo renvoie toujours au Hero -->
+          <a href="/" data-target="hero" class="block h-12">
+            <img
+              src="/logo_long.svg"
+              alt="Julie – Psychopraticienne"
+              class="h-full object-contain"
+            />
+          </a>
+
+          <!-- Nav desktop -->
+          <nav
+            class="hidden md:flex items-center space-x-4 text-sm font-medium text-grayish"
+          >
+            <a
+              href="/"
+              data-target="hero"
+              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              >Accueil</a
+            >
+            <a
+              href="/"
+              data-target="apropos"
+              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              >À propos</a
+            >
+            <a
+              href="/"
+              data-target="approche"
+              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              >Approche</a
+            >
+            <a
+              href="/"
+              data-target="therapies"
+              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              >Thérapies</a
+            >
+            <a
+              href="/"
+              data-target="temoignages"
+              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              >Témoignages</a
+            >
+            <a
+              href="/"
+              data-target="contact-form"
+              class="px-3 py-1 rounded-full bg-primary text-white transition"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Hamburger (mobile) -->
+          <button
+            id="toggleBtn"
+            aria-label="Menu mobile"
+            class="md:hidden p-2 rounded-full bg-white/50 hover:bg-white transition shadow"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Drawer mobile -->
+        <aside
+          id="navDrawer"
+          class="fixed top-0 right-0 h-full w-64 bg-white/90 backdrop-blur-lg p-6 transform translate-x-full transition-transform md:hidden z-50"
+        >
+          <button
+            id="closeBtn"
+            aria-label="Fermer le menu"
+            class="mb-6 p-2 rounded-full bg-white hover:bg-gray-100 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <nav class="flex flex-col space-y-4 text-lg font-medium text-grayish">
+            <a href="/" data-target="hero">Accueil</a>
+            <a href="/" data-target="apropos">À propos</a>
+            <a href="/" data-target="approche">Approche</a>
+            <a href="/" data-target="therapies">Thérapies</a>
+            <a href="/" data-target="temoignages">Témoignages</a>
+            <a href="/" data-target="contact-form" class="font-semibold"
+              >Contact</a
+            >
+          </nav>
+        </aside>
+      </div>
+    </header>
+
+    <!-- Contenu de chaque page -->
+    <main class="min-h-[60vh] px-4 md:px-8 lg:px-16">
+      <slot />
+    </main>
+
+    <!-- Section Contact (présente sur chaque pages) -->
+    <section id="contact-form" class="py-24 text-center bg-[#F5F7F7]">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-serif font-semibold">Me contacter</h2>
+        <p class="mt-4 text-grayish text-lg">
+          Pour toute question ou prise de rendez-vous, merci de remplir le
+          formulaire ci-dessous.
+        </p>
+        <form action="#" method="POST" class="mt-8 space-y-6 text-left">
+          <div>
+            <label class="block text-sm font-medium text-dark mb-1">Nom</label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-dark mb-1">Email</label
+            >
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-dark mb-1"
+              >Message</label
+            >
+            <textarea
+              name="message"
+              rows="5"
+              required
+              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <Button type="submit" colorClass="bg-primary text-white">
+              Envoyer le message
+            </Button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-neutral text-sm text-grayish border-t border-border mt-16 px-4 md:px-8 lg:px-16 py-10"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6"
+      >
+        <div>
+          &copy; {new Date().getFullYear()} Julie – Tous droits réservés
+        </div>
+        <div class="flex gap-4">
+          <a href="/mentions-legales/" class="hover:text-dark transition"
+            >Mentions légales</a
+          >
+          <a href="/politique-cookies/" class="hover:text-dark transition"
+            >Cookies</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // déclenche le fade-in body au chargement complet
+      window.addEventListener("load", () => {
+        document.body.classList.add("page-loaded");
+      });
+    </script>
+
+    <script is:inline type="module">
+      // Toggle drawer mobile
+      const toggleBtn = document.getElementById("toggleBtn");
+      const navDrawer = document.getElementById("navDrawer");
+      const closeBtn = document.getElementById("closeBtn");
+      toggleBtn.addEventListener("click", () => {
+        navDrawer.classList.remove("translate-x-full");
+      });
+      closeBtn.addEventListener("click", () => {
+        navDrawer.classList.add("translate-x-full");
+      });
+      navDrawer.querySelectorAll("a[data-target]").forEach((link) => {
+        link.addEventListener("click", () => {
+          navDrawer.classList.add("translate-x-full");
+        });
+      });
+
+      // Smooth scroll sans afficher de hash dans l'URL
+      document.querySelectorAll("a[data-target]").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.dataset.target;
+          // Si on n'est pas sur la homepage, stocke la cible et redirige
+          if (window.location.pathname !== "/") {
+            sessionStorage.setItem("scrollTo", targetId);
+            window.location.href = "/";
+            return;
+          }
+          // Sinon, scroll direct
+          const section = document.getElementById(targetId);
+          if (section) section.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // Au chargement, gère redirection via sessionStorage
+      const to = sessionStorage.getItem("scrollTo");
+      if (to) {
+        const el = document.getElementById(to);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+            sessionStorage.removeItem("scrollTo");
+          }, 50);
+        }
+      }
+    </script>
+
+    <!-- Bannière cookies -->
+    <CookieBanner />
+  </body>
+</html>

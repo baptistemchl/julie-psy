@@ -1,0 +1,49 @@
+---
+// Composant de bannière de cookies
+// Style « pill » pour matcher la navbar : épuré, cohérent et centré
+---
+
+<div
+  id="cookie-banner"
+  class="hidden fixed bottom-6 inset-x-4 md:inset-x-40 flex items-center justify-between bg-white/30 backdrop-blur-lg rounded-full px-6 py-3 shadow-sm"
+>
+  <p class="text-gray-800 text-sm">
+    Ce site utilise des cookies pour améliorer votre expérience.
+    <a href="/politique-cookies/" class="underline font-medium"
+      >En savoir plus</a
+    >
+  </p>
+  <button
+    id="cookie-accept"
+    class="ml-4 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition"
+  >
+    Accepter
+  </button>
+</div>
+
+<script is:inline type="module">
+  // On reprend la même logique que précédemment
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("cookie-accept");
+
+  // Si le cookie existe déjà, on n'affiche pas
+  const hasConsent = document.cookie
+    .split("; ")
+    .some((c) => c.startsWith("cookie_consent="));
+
+  if (!hasConsent) banner.classList.remove("hidden");
+
+  acceptBtn.addEventListener("click", () => {
+    const expiry = new Date();
+    expiry.setFullYear(expiry.getFullYear() + 1);
+    document.cookie = [
+      "cookie_consent=true",
+      "expires=" + expiry.toUTCString(),
+      "path=/",
+      "Secure",
+      "SameSite=Lax",
+    ].join("; ");
+
+    banner.remove();
+  });
+</script>

@@ -1,0 +1,16 @@
+# robots.txt — Julie Psy
+
+# Sitemap principal généré automatiquement par Astro
+Sitemap: https://www.julie-psy.fr/sitemap-index.xml
+
+User-agent: *
+# Autorisation générale : tout est indexable sauf ce qui suit
+
+# Bloquer les répertoires non-pertinents (s'il y en a)
+Disallow: /cgi-bin/
+Disallow: /draft/
+Disallow: /temp/
+
+# Bloquer les pages légales non pertinentes pour le SEO
+Disallow: /mentions-legales/
+Disallow: /politique-cookies/

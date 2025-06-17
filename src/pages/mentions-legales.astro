@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Mentions légales – Julie – Psychopraticienne";
+const description =
+  "Mentions légales du site Julie – Psychopraticienne, conforme aux obligations en l’état des informations fournies";
+const url = "https://www.julie-psy.fr/mentions-legales/";
+---
+
+<BaseLayout {title} {description} {url}>
+  <section
+    id="mentions-legales"
+    class="py-16 px-4 md:px-8 lg:px-16 bg-white text-dark font-sans"
+  >
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-serif text-3xl font-semibold mb-8">Mentions légales</h1>
+
+      <!-- 1. Éditeur / Exploitant -->
+      <section class="mb-12">
+        <h2
+          class="font-serif text-2xl font-semibold mb-4 border-b border-border pb-2"
+        >
+          1. Éditeur / Exploitant
+        </h2>
+        <p class="text-grayish leading-relaxed">
+          <strong>Nom / Dénomination</strong> : Mme Julie MICHEL<br />
+          <strong>Statut juridique</strong> : Auto-entrepreneur<br />
+          <strong>Adresse du lieu d’exercice</strong> : 3 rue du clos picard, 22400
+          LANDEHEN<br />
+          <strong>Email professionnel</strong> : <a
+            href="mailto:julie.michel.psy.22@gmail.com"
+            class="underline">julie.michel.psy.22@gmail.com</a
+          ><br />
+          <strong>Téléphone professionnel</strong> : 06.11.91.38.42<br />
+          <strong>Numéro SIRET</strong> : 512 606 856 00031<br />
+          <strong>Régime de TVA</strong> : TVA non applicable, art. 293 B CGI<br
+          />
+          <strong>Assurance responsabilité civile professionnelle</strong> : aucune
+          couverture souscrite à ce jour
+        </p>
+      </section>
+
+      <!-- 2. Directeur de publication -->
+      <section class="mb-12">
+        <h2
+          class="font-serif text-2xl font-semibold mb-4 border-b border-border pb-2"
+        >
+          2. Directeur de publication
+        </h2>
+        <p class="text-grayish leading-relaxed">
+          <strong>Nom / Fonction</strong> : Mme Julie MICHEL, responsable du contenu
+          du site.<br />
+          <strong>Coordonnées</strong> : identiques à celles de l’éditeur ci-dessus.
+        </p>
+      </section>
+
+      <!-- 3. Traitement des données personnelles (RGPD) -->
+      <section class="mb-12">
+        <h2
+          class="font-serif text-2xl font-semibold mb-4 border-b border-border pb-2"
+        >
+          3. Traitement des données personnelles
+        </h2>
+        <p class="text-grayish leading-relaxed">
+          <strong>Responsable du traitement</strong> : Mme Julie MICHEL.<br />
+          <strong>Données collectées</strong> : uniquement l’adresse e-mail fournie
+          volontairement par l’internaute via le formulaire de contact, en vue de
+          recevoir une réponse. Aucune autre donnée n’est collectée.<br />
+          <strong>Finalité</strong> : répondre à la demande formulée via le formulaire
+          de contact.<br />
+          <strong>Durée de conservation</strong> : l’e-mail est conservé uniquement
+          le temps nécessaire pour traiter la demande puis supprimé.<br />
+          <strong>Mesures de sécurité</strong> : accès à la boîte mail sécurisé par
+          mot de passe fort, HTTPS pour le site. Aucune autre donnée n’étant conservée,
+          il n’y a pas d’autre traitement.<br />
+          <strong>Droits des personnes</strong> : l’internaute peut demander la suppression
+          anticipée de son e-mail avant ou après réponse, en écrivant à <a
+            href="mailto:julie.michel.psy.22@gmail.com"
+            class="underline">julie.michel.psy.22@gmail.com</a
+          >.<br />
+          <strong>Cookies</strong> : voir la page <a
+            href="/politique-cookies/"
+            class="underline">Politique de cookies</a
+          > pour la gestion des cookies du site. Aucun cookie n’est utilisé pour
+          stocker des données personnelles en dehors du cas strict du fonctionnement
+          technique du site.<br />
+          <strong>CNIL</strong> : en cas de question relative aux données personnelles,
+          possibilité de saisir la CNIL via https://www.cnil.fr.
+        </p>
+      </section>
+
+      <!-- 4. Droit applicable et juridiction compétente -->
+      <section class="mb-12">
+        <h2
+          class="font-serif text-2xl font-semibold mb-4 border-b border-border pb-2"
+        >
+          4. Droit applicable et juridiction compétente
+        </h2>
+        <p class="text-grayish leading-relaxed">
+          <strong>Droit applicable</strong> : droit français.<br />
+          <strong>Tribunal compétent</strong> : Tribunal judiciaire de Saint-Brieuc
+          (ou tribunal compétent selon localisation du siège d’exercice).
+        </p>
+      </section>
+
+      <!-- 5. Hébergeur -->
+      <!-- Note : l’information sur l’hébergeur n’étant pas fournie, cette section est omise. -->
+      <!-- Pensez à ajouter ultérieurement les coordonnées de l’hébergeur lorsque disponibles. -->
+
+      <!-- 6. Autres sections -->
+      <!-- Les autres sections (propriété intellectuelle, conditions d’utilisation, etc.) ne sont pas incluses car non fournies ou non souhaitées à ce stade. -->
+
+      <!-- 7. Date de mise à jour -->
+      <section>
+        <h2
+          class="font-serif text-2xl font-semibold mb-4 border-b border-border pb-2"
+        >
+          Date de mise à jour
+        </h2>
+        <p class="text-grayish leading-relaxed">
+          Dernière mise à jour : 17 juin 2025
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
