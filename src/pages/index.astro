@@ -4,7 +4,7 @@ import Button from "../components/Button.astro";
 
 const title = "Julie – Psychopraticienne à votre écoute";
 const description =
-  "Séances d’accompagnement thérapeutique à distance ou en cabinet, dans un cadre bienveillant et confidentiel.";
+  "Séances d’accompagnement émotionnel et d’écoute, à distance ou en cabinet, dans un cadre bienveillant et confidentiel.";
 ---
 
 <BaseLayout {title} {description}>
@@ -19,10 +19,6 @@ const description =
         pour un mieux-être durable, dans un espace d’écoute sincère.
       </p>
       <div class="mt-8 flex flex-col gap-4 sm:flex-row justify-center">
-        <!-- 
-          On met href="/" et data-target="contact-form", 
-          et on empêche la navigation native via onclick="..."
-        -->
         <Button
           href="/"
           data-target="contact-form"
@@ -44,10 +40,7 @@ const description =
         class="w-32 h-auto object-cover rounded-full mx-auto mb-6 shadow-subtle"
       />
       <h2 class="text-2xl font-serif font-semibold">Qui suis-je ?</h2>
-<p class="mt-4 text-grayish text-lg leading-relaxed">
-  Je suis Julie, psychopraticienne diplômée, spécialisée dans
-  l'accompagnement des personnes confrontées à des difficultés
-  émotionnelles, relationnelles ou à des troubles addictifs. Formée en
+<p class="mt-4 text-grayish text-lg leading-relaxed">Formée en
   <strong>hypnose thérapeutique</strong> et en
   <strong>thérapies cognitivo-comportementales (TCC)</strong>, j’accompagne
   également les personnes vivant un
@@ -56,7 +49,6 @@ const description =
   bienveillante, et centrée sur la personne : chaque parcours est unique,
   chaque écoute l’est aussi.
 </p>
-
     </div>
   </section>
 
@@ -84,12 +76,12 @@ const description =
             Approche intégrative et holistique
           </h3>
           <p class="text-grayish">
-            J’adapte les outils thérapeutiques à votre singularité, en combinant
-            différentes méthodes pour prendre en compte l’ensemble de votre être
-            : corps, esprit, émotions, histoire.<br />
+            J’adapte les outils d’accompagnement à votre singularité, en
+            combinant différentes approches pour prendre en compte l’ensemble
+            de votre être : corps, esprit, émotions, histoire.<br />
             <em class="block mt-3 text-sm text-gray-600">
-              “Ce qui est nécessaire pour changer une personne, c’est de changer
-              sa conscience de soi.” – Abraham Maslow
+              “Ce qui est nécessaire pour changer une personne, c’est de
+              changer sa conscience de soi.” – Abraham Maslow
             </em>
           </p>
         </div>
@@ -111,26 +103,30 @@ const description =
     </div>
   </section>
 
-  <!-- Section Thérapies proposées -->
+  <!-- Section Accompagnements -->
   <section id="therapies" class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h2 class="text-2xl font-serif font-semibold mb-12">
-        Thérapies proposées
+        Accompagnements proposés
       </h2>
+
       <div class="grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Hypnose -->
+        <!-- Hypnose (accompagnement) -->
         <div
           class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
         >
           <img
             src="/illustrations/1.avif"
-            alt="Séance d'hypnose thérapeutique"
+            alt="Accompagnement utilisant des outils inspirés de l’hypnose"
             class="h-48 w-full object-cover rounded-xl mb-4"
           />
-          <h3 class="text-2xl font-semibold mb-2">Hypnose thérapeutique</h3>
+          <h3 class="text-2xl font-semibold mb-2">
+            Accompagnement par l’hypnose
+          </h3>
           <p class="text-grayish leading-relaxed mb-4">
-            Une méthode douce pour agir sur le stress, les phobies, la douleur
-            et les croyances limitantes.
+            Un accompagnement qui mobilise des outils issus de l’hypnose
+            pour favoriser le relâchement, apaiser certaines peurs et
+            soutenir les changements que vous souhaitez mettre en place.
           </p>
           <details class="mt-4 text-center">
             <summary
@@ -142,35 +138,42 @@ const description =
               class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
             >
               <p>
-                L'hypnose est un état modifié de conscience qui permet d'accéder
-                à vos ressources internes. Cette méthode douce et respectueuse
-                favorise le changement durable, en agissant sur les
-                comportements, les émotions ou les croyances limitantes.
+                L’hypnose est un état modifié de conscience qui permet de se
+                connecter à ses ressources internes. Dans ce cadre,
+                elle est utilisée comme un outil d’accompagnement, toujours
+                dans le respect de votre rythme et de vos limites.
               </p>
               <p>
-                Utilisée notamment pour gérer le stress, les phobies, les
-                douleurs chroniques ou les troubles anxieux, l'hypnose permet de
-                se reconnecter à soi, dans un cadre sécurisant.
+                Elle peut être particulièrement aidante pour travailler sur
+                le stress, certaines peurs ou des habitudes devenues
+                pesantes, en complément d’un éventuel suivi médical ou
+                paramédical.
+              </p>
+              <p class="text-xs text-gray-500">
+                Cet accompagnement ne remplace pas un avis ni un suivi
+                médical. En cas de doute, parlez-en à votre médecin ou à
+                un·e professionnel·le de santé.
               </p>
             </div>
           </details>
         </div>
 
-        <!-- TCC -->
+        <!-- Approches cognitives / comportementales (reformulation) -->
         <div
           class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
         >
           <img
             src="/illustrations/2.avif"
-            alt="Thérapies cognitivo-comportementales"
+            alt="Accompagnement centré sur les liens entre pensées, émotions et comportements"
             class="h-48 w-full object-cover rounded-xl mb-4"
           />
           <h3 class="text-2xl font-semibold mb-2">
-            Thérapies Cognitivo-Comportementales
+            Approches pensées–émotions–comportements
           </h3>
           <p class="text-grayish leading-relaxed mb-4">
-            Des outils concrets pour observer et transformer pensées et
-            comportements.
+            Des pistes concrètes pour observer les liens entre ce que vous
+            pensez, ressentez et faites, et expérimenter d’autres façons
+            de réagir au quotidien.
           </p>
           <details class="mt-4 text-center">
             <summary
@@ -182,34 +185,41 @@ const description =
               class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
             >
               <p>
-                Les TCC sont des approches basées sur l'observation des pensées,
-                émotions et comportements. Elles permettent d'agir concrètement
-                sur ce qui vous freine ou vous fait souffrir.
+                Ces approches s’inspirent notamment des courants cognitifs
+                et comportementaux, qui s’intéressent à l’impact de nos
+                pensées, de nos émotions et de nos habitudes sur notre
+                vécu au quotidien.
               </p>
               <p>
-                Recommandées pour traiter l'anxiété, les TOC, la dépression ou
-                les troubles de l'estime de soi, les TCC vous aident à
-                développer de nouveaux schémas plus aidants.
+                Ensemble, nous identifions ce qui vous freine ou vous
+                fait souffrir, puis nous explorons de nouvelles façons
+                d’agir, étape par étape, en tenant compte de vos ressources
+                et de votre contexte.
+              </p>
+              <p class="text-xs text-gray-500">
+                Ce travail ne se substitue pas à une prise en charge
+                médicale ou psychiatrique lorsque celle-ci est nécessaire.
               </p>
             </div>
           </details>
         </div>
 
-        <!-- Addictions -->
+        <!-- Addictions (soutien / accompagnement) -->
         <div
           class="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 self-start"
         >
           <img
             src="/illustrations/3.avif"
-            alt="Accompagnement des addictions"
+            alt="Soutien face aux comportements de dépendance"
             class="h-48 w-full object-cover rounded-xl mb-4"
           />
           <h3 class="text-2xl font-semibold mb-2">
-            Accompagnement des addictions
+            Soutien face aux conduites addictives
           </h3>
           <p class="text-grayish leading-relaxed mb-4">
-            Comprendre vos mécanismes, agir sur les déclencheurs et retrouver
-            votre autonomie.
+            Comprendre vos mécanismes, repérer les déclencheurs et
+            retrouver davantage de liberté dans votre relation aux
+            comportements de dépendance.
           </p>
           <details class="mt-4 text-center">
             <summary
@@ -221,89 +231,106 @@ const description =
               class="toggle-content mt-2 text-grayish leading-relaxed space-y-2 text-left"
             >
               <p>
-                Que ce soit pour une dépendance au tabac, à l’alcool, aux écrans
-                ou à une autre forme d’addiction, l’accompagnement thérapeutique
-                vous aide à comprendre les mécanismes de cette emprise et à en
-                sortir, sans culpabilité.
+                Qu’il s’agisse de tabac, d’alcool, d’écrans ou d’autres
+                comportements, l’accompagnement permet de mettre des mots
+                sur ce qui se joue, sans jugement ni culpabilisation.
               </p>
               <p>
-                Ensemble, nous travaillons sur les causes profondes, les
-                déclencheurs émotionnels et la reconstruction d’une autonomie
-                intérieure.
+                Nous travaillons ensemble sur les situations à risque,
+                les émotions difficiles et la mise en place de nouveaux
+                repères plus aidants, en articulation possible avec
+                d’autres professionnels si besoin.
+              </p>
+              <p class="text-xs text-gray-500">
+                En cas d’addiction installée, cet accompagnement ne remplace
+                pas un suivi spécialisé (médecin, service d’addictologie,
+                centre de soins, etc.), mais peut venir le compléter.
               </p>
             </div>
           </details>
         </div>
       </div>
+
+      <p class="mt-8 text-xs text-gray-500 max-w-3xl mx-auto">
+        L’accompagnement proposé n’est pas un acte médical et ne se
+        substitue pas à un suivi réalisé par un médecin, un·e psychologue
+        ou un·e psychiatre. En cas de difficulté importante ou de doute,
+        il est recommandé de demander un avis médical.
+      </p>
     </div>
   </section>
-<!-- Section Accompagnement du deuil lié à la perte d'un animal -->
-<section id="deuil-animal" class="py-16 bg-white">
-  <div
-    class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-2 items-center"
-  >
-    <!-- Texte -->
-    <div class="text-left">
-      <h2 class="text-2xl font-serif font-semibold mb-4">
-        Accompagnement du deuil lié à la perte d'un animal
-      </h2>
-      <p class="text-grayish leading-relaxed mb-4">
-        La perte d’un animal peut être un choc profond : il ou elle faisait
-        partie du quotidien, de la famille, de votre histoire. Pourtant, ce
-        deuil est souvent minimisé ou incompris par l’entourage.
-      </p>
-      <p class="text-grayish leading-relaxed mb-4">
-        Cet accompagnement s’adresse aux personnes qui traversent cette
-        épreuve et qui ont besoin d’un espace pour déposer ce qu’elles
-        ressentent : tristesse, culpabilité, colère, soulagement mêlé de
-        peine, sentiment de vide…
-      </p>
-      <p class="text-grayish leading-relaxed mb-4">
-        Il ne s’agit pas forcément d’«&nbsp;entamer une thérapie&nbsp;» :
-        vous pouvez venir pour une ou plusieurs séances ponctuelles,
-        simplement pour être soutenu·e, comprendre ce qui se passe en vous
-        et trouver une manière plus apaisée d’avancer avec cette perte.
-      </p>
-      <ul class="text-grayish leading-relaxed list-disc pl-5 mb-6 space-y-1">
-        <li>Avant ou après une décision d’euthanasie</li>
-        <li>Juste après la perte, en pleine émotion</li>
-        <li>Quand le deuil semble «&nbsp;bloqué&nbsp;» ou persistant</li>
-        <li>Pour pouvoir en parler sans être jugé·e ni minimisé·e</li>
-      </ul>
 
-      <Button
-        href="/"
-        data-target="contact-form"
-        onclick="event.preventDefault()"
-        colorClass="bg-primary text-white"
-      >
-        Être accompagné pour un deuil animal
-      </Button>
-    </div>
-
-    <!-- Visuel / card -->
+  <!-- Section Accompagnement du deuil lié à la perte d'un animal -->
+  <section id="deuil-animal" class="py-16 bg-white">
     <div
-      class="bg-[#F5F5F7] rounded-2xl shadow-subtle p-6 flex flex-col justify-between h-full"
+      class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-2 items-center"
     >
-      <img
-        src="/illustrations/4.avif"
-        alt="Accompagnement du deuil lié à la perte d'un animal"
-        class="h-56 w-full object-cover rounded-xl mb-4"
-      />
-      <p class="text-grayish leading-relaxed mb-3">
-        Ici, votre lien avec votre animal est reconnu et respecté. Il n’y a
-        ni «&nbsp;exagération&nbsp;» ni «&nbsp;deuil ridicule&nbsp;» : ce que
-        vous ressentez a toute sa place.
-      </p>
-      <p class="text-grayish leading-relaxed">
-        L’accompagnement permet de traverser cette période à votre rythme,
-        sans devoir tout porter seul·e, et de garder la place de votre
-        compagnon dans votre histoire, sans que la douleur prenne toute la
-        place.
-      </p>
+      <!-- Texte -->
+      <div class="text-left">
+        <h2 class="text-2xl font-serif font-semibold mb-4">
+          Accompagnement du deuil lié à la perte d'un animal
+        </h2>
+        <p class="text-grayish leading-relaxed mb-4">
+          La perte d’un animal peut être un choc profond : il ou elle
+          faisait partie du quotidien, de la famille, de votre histoire.
+          Pourtant, ce deuil est souvent minimisé ou incompris par
+          l’entourage.
+        </p>
+        <p class="text-grayish leading-relaxed mb-4">
+          Cet accompagnement s’adresse aux personnes qui traversent cette
+          épreuve et qui ont besoin d’un espace pour déposer ce qu’elles
+          ressentent : tristesse, culpabilité, colère, soulagement mêlé
+          de peine, sentiment de vide…
+        </p>
+        <p class="text-grayish leading-relaxed mb-4">
+          Il ne s’agit pas forcément d’«&nbsp;entamer une thérapie&nbsp;» :
+          vous pouvez venir pour une ou plusieurs séances ponctuelles,
+          simplement pour être soutenu·e, comprendre ce qui se passe en
+          vous et trouver une manière plus apaisée d’avancer avec cette
+          perte.
+        </p>
+        <ul
+          class="text-grayish leading-relaxed list-disc pl-5 mb-6 space-y-1"
+        >
+          <li>Avant ou après une décision d’euthanasie</li>
+          <li>Juste après la perte, en pleine émotion</li>
+          <li>Quand le deuil semble «&nbsp;bloqué&nbsp;» ou persistant</li>
+          <li>Pour pouvoir en parler sans être jugé·e ni minimisé·e</li>
+        </ul>
+
+        <Button
+          href="/"
+          data-target="contact-form"
+          onclick="event.preventDefault()"
+          colorClass="bg-primary text-white"
+        >
+          Être accompagné pour un deuil animal
+        </Button>
+      </div>
+
+      <!-- Visuel / card -->
+      <div
+        class="bg-[#F5F5F7] rounded-2xl shadow-subtle p-6 flex flex-col justify-between h-full"
+      >
+        <img
+          src="/illustrations/4.avif"
+          alt="Accompagnement du deuil lié à la perte d'un animal"
+          class="h-56 w-full object-cover rounded-xl mb-4"
+        />
+        <p class="text-grayish leading-relaxed mb-3">
+          Ici, votre lien avec votre animal est reconnu et respecté. Il n’y a
+          ni «&nbsp;exagération&nbsp;» ni «&nbsp;deuil ridicule&nbsp;» :
+          ce que vous ressentez a toute sa place.
+        </p>
+        <p class="text-grayish leading-relaxed">
+          L’accompagnement permet de traverser cette période à votre
+          rythme, sans devoir tout porter seul·e, et de garder la place
+          de votre compagnon dans votre histoire, sans que la douleur
+          prenne toute la place.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Témoignages -->
   <section id="temoignages" class="py-20 bg-white relative">
@@ -316,15 +343,21 @@ const description =
           {
             Array.from({ length: 2 }).map(() => (
               <>
-                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                <div
+                  class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0"
+                >
                   <p class="text-grayish italic">
                     "Grâce à l’accompagnement de Julie, j’ai pu me libérer
                     progressivement d’une addiction qui me pesait depuis des
                     années."
                   </p>
-                  <p class="mt-4 text-sm font-medium text-dark">— Pauline R.</p>
+                  <p class="mt-4 text-sm font-medium text-dark">
+                    — Pauline R.
+                  </p>
                 </div>
-                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                <div
+                  class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0"
+                >
                   <p class="text-grayish italic">
                     "Une écoute rare, une bienveillance constante. Julie m’a
                     aidé à reprendre confiance en moi."
@@ -333,12 +366,16 @@ const description =
                     — Thibault M.
                   </p>
                 </div>
-                <div class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0">
+                <div
+                  class="bg-[#F5F5F7] p-6 rounded-xl shadow-subtle w-80 shrink-0"
+                >
                   <p class="text-grayish italic">
-                    "Je ne pensais pas qu’un suivi thérapeutique pouvait être
-                    aussi humain. J’ai avancé à mon rythme, sans pression."
+                    "Je ne pensais pas qu’un suivi pouvait être aussi humain.
+                    J’ai avancé à mon rythme, sans pression."
                   </p>
-                  <p class="mt-4 text-sm font-medium text-dark">— Claire D.</p>
+                  <p class="mt-4 text-sm font-medium text-dark">
+                    — Claire D.
+                  </p>
                 </div>
               </>
             ))
@@ -378,9 +415,7 @@ const description =
   </section>
 </BaseLayout>
 
-<!-- script forcé côté client pour l’animation slide down/up -->
 <script is:inline type="module">
-  // Au chargement de la page, préparer l'animation
   document.addEventListener("DOMContentLoaded", () => {
     const detailsEls = document.querySelectorAll("details");
     detailsEls.forEach((details) => {
