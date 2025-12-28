@@ -1,6 +1,8 @@
 ---
 // Layout principal pour le site Julie – Psychopraticienne
-// Gère l’en-tête, le pied de page, la navigation sans hash, et intègre la bannière de cookies
+// Gère l’en-tête, le pied de page, la navigation sans hash,
+// le formulaire de contact et la bannière de cookies.
+
 import Button from "../components/Button.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 
@@ -33,10 +35,24 @@ const {
     <title>{title}</title>
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png"
+    />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="msapplication-TileColor" content="#da532c" />
@@ -54,7 +70,7 @@ const {
     <style>
       body {
         opacity: 0;
-        background-color: #f5f5f7; /* même couleur que le Hero */
+        background-color: #f5f5f7;
         transition: opacity 0.5s ease-in-out;
       }
       body.page-loaded {
@@ -66,11 +82,13 @@ const {
   <body class="bg-neutral text-dark font-sans antialiased">
     <!-- Header sticky -->
     <header
-      class="sticky top-0 w-full py-6 px-4 md:px-8 lg:px-16 bg-transparent z-50"
+      class="sticky top-0 w-full py-6 px-4 md:px-8 lg:px-16
+             bg-transparent z-50"
     >
       <div class="max-w-7xl mx-auto flex justify-center relative">
         <div
-          class="inline-flex items-center space-x-6 bg-white/30 backdrop-blur-lg rounded-full px-6 py-2 shadow-sm"
+          class="inline-flex items-center space-x-6 bg-white/30
+                 backdrop-blur-lg rounded-full px-6 py-2 shadow-sm"
         >
           <!-- Logo renvoie toujours au Hero -->
           <a href="/" data-target="hero" class="block h-12">
@@ -83,42 +101,49 @@ const {
 
           <!-- Nav desktop -->
           <nav
-            class="hidden md:flex items-center space-x-4 text-sm font-medium text-grayish"
+            class="hidden md:flex items-center space-x-4 text-sm
+                   font-medium text-grayish"
           >
             <a
               href="/"
               data-target="hero"
-              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              class="px-3 py-1 rounded-full
+                     hover:bg-primary/20 transition"
               >Accueil</a
             >
             <a
               href="/"
               data-target="apropos"
-              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              class="px-3 py-1 rounded-full
+                     hover:bg-primary/20 transition"
               >À propos</a
             >
             <a
               href="/"
               data-target="approche"
-              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              class="px-3 py-1 rounded-full
+                     hover:bg-primary/20 transition"
               >Approche</a
             >
             <a
               href="/"
               data-target="therapies"
-              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              class="px-3 py-1 rounded-full
+                     hover:bg-primary/20 transition"
               >Thérapies</a
             >
             <a
               href="/"
               data-target="temoignages"
-              class="px-3 py-1 rounded-full hover:bg-primary/20 transition"
+              class="px-3 py-1 rounded-full
+                     hover:bg-primary/20 transition"
               >Témoignages</a
             >
             <a
               href="/"
               data-target="contact-form"
-              class="px-3 py-1 rounded-full bg-primary text-white transition"
+              class="px-3 py-1 rounded-full bg-primary text-white
+                     transition"
               >Contact</a
             >
           </nav>
@@ -127,7 +152,8 @@ const {
           <button
             id="toggleBtn"
             aria-label="Menu mobile"
-            class="md:hidden p-2 rounded-full bg-white/50 hover:bg-white transition shadow"
+            class="md:hidden p-2 rounded-full bg-white/50
+                   hover:bg-white transition shadow"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +166,8 @@ const {
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"></path>
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
             </svg>
           </button>
         </div>
@@ -148,12 +175,15 @@ const {
         <!-- Drawer mobile -->
         <aside
           id="navDrawer"
-          class="fixed top-0 right-0 h-full w-64 bg-white/90 backdrop-blur-lg p-6 transform translate-x-full transition-transform md:hidden z-50"
+          class="fixed top-0 right-0 h-full w-64 bg-white/90
+                 backdrop-blur-lg p-6 transform translate-x-full
+                 transition-transform md:hidden z-50"
         >
           <button
             id="closeBtn"
             aria-label="Fermer le menu"
-            class="mb-6 p-2 rounded-full bg-white hover:bg-gray-100 transition"
+            class="mb-6 p-2 rounded-full bg-white hover:bg-gray-100
+                   transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -166,10 +196,14 @@ const {
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"></path>
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
             </svg>
           </button>
-          <nav class="flex flex-col space-y-4 text-lg font-medium text-grayish">
+          <nav
+            class="flex flex-col space-y-4 text-lg font-medium
+                   text-grayish"
+          >
             <a href="/" data-target="hero">Accueil</a>
             <a href="/" data-target="apropos">À propos</a>
             <a href="/" data-target="approche">Approche</a>
@@ -188,45 +222,75 @@ const {
       <slot />
     </main>
 
-    <!-- Section Contact (présente sur chaque pages) -->
+    <!-- Section Contact -->
     <section id="contact-form" class="py-24 text-center bg-[#F5F7F7]">
       <div class="max-w-3xl mx-auto px-4">
         <h2 class="text-2xl font-serif font-semibold">Me contacter</h2>
         <p class="mt-4 text-grayish text-lg">
           Pour toute question ou prise de rendez-vous, merci de remplir le
-          formulaire ci-dessous ou de me joindre par téléphone au 06 11 91 38 42.
+          formulaire ci-dessous ou de me joindre par téléphone au
+          06 11 91 38 42.
         </p>
-        <form action="#" method="POST" class="mt-8 space-y-6 text-left">
+
+        <form
+          id="contactForm"
+          class="mt-8 space-y-6 text-left"
+          novalidate
+        >
+          <!-- Honeypot anti-spam (champ caché pour robots) -->
+          <input
+            type="text"
+            name="website"
+            autocomplete="off"
+            tabindex="-1"
+            class="hidden"
+          />
+
           <div>
-            <label class="block text-sm font-medium text-dark mb-1">Nom</label>
+            <label
+              class="block text-sm font-medium text-dark mb-1"
+            >
+              Nom
+            </label>
             <input
               type="text"
               name="name"
               required
-              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              class="w-full border border-border rounded-lg px-4 py-2
+                     focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
+
           <div>
-            <label class="block text-sm font-medium text-dark mb-1">Email</label
+            <label
+              class="block text-sm font-medium text-dark mb-1"
             >
+              Email
+            </label>
             <input
               type="email"
               name="email"
               required
-              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              class="w-full border border-border rounded-lg px-4 py-2
+                     focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
+
           <div>
-            <label class="block text-sm font-medium text-dark mb-1"
-              >Message</label
+            <label
+              class="block text-sm font-medium text-dark mb-1"
             >
+              Message
+            </label>
             <textarea
               name="message"
               rows="5"
               required
-              class="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              class="w-full border border-border rounded-lg px-4 py-2
+                     focus:outline-none focus:ring-2 focus:ring-primary"
             ></textarea>
           </div>
+
           <div class="text-center">
             <Button type="submit" colorClass="bg-primary text-white">
               Envoyer le message
@@ -238,24 +302,44 @@ const {
 
     <!-- Footer -->
     <footer
-      class="bg-neutral text-sm text-grayish border-t border-border mt-16 px-4 md:px-8 lg:px-16 py-10"
+      class="bg-neutral text-sm text-grayish border-t border-border
+             mt-16 px-4 md:px-8 lg:px-16 py-10"
     >
       <div
-        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6"
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between
+               gap-6"
       >
         <div>
           &copy; {new Date().getFullYear()} Julie – Tous droits réservés
         </div>
         <div class="flex gap-4">
-          <a href="/mentions-legales/" class="hover:text-dark transition"
+          <a
+            href="/mentions-legales/"
+            class="hover:text-dark transition"
             >Mentions légales</a
           >
-          <a href="/politique-cookies/" class="hover:text-dark transition"
+          <a
+            href="/politique-cookies/"
+            class="hover:text-dark transition"
             >Cookies</a
           >
         </div>
       </div>
     </footer>
+
+    <!-- Snackbar contact -->
+    <div
+      id="contact-toast"
+      class="fixed bottom-6 right-6 z-50 hidden
+             px-4 py-3 rounded-lg shadow-lg text-sm text-white
+             bg-green-600"
+      role="status"
+      aria-live="polite"
+    >
+      <span id="contact-toast-text">
+        Votre message a bien été envoyé.
+      </span>
+    </div>
 
     <!-- Scripts -->
     <script>
@@ -266,49 +350,133 @@ const {
     </script>
 
     <script is:inline type="module">
-      // Toggle drawer mobile
+      // Gestion du menu mobile
       const toggleBtn = document.getElementById("toggleBtn");
       const navDrawer = document.getElementById("navDrawer");
       const closeBtn = document.getElementById("closeBtn");
-      toggleBtn.addEventListener("click", () => {
-        navDrawer.classList.remove("translate-x-full");
-      });
-      closeBtn.addEventListener("click", () => {
-        navDrawer.classList.add("translate-x-full");
-      });
-      navDrawer.querySelectorAll("a[data-target]").forEach((link) => {
-        link.addEventListener("click", () => {
+
+      if (toggleBtn && navDrawer && closeBtn) {
+        toggleBtn.addEventListener("click", () => {
+          navDrawer.classList.remove("translate-x-full");
+        });
+        closeBtn.addEventListener("click", () => {
           navDrawer.classList.add("translate-x-full");
         });
-      });
+        navDrawer
+          .querySelectorAll("a[data-target]")
+          .forEach((link) => {
+            link.addEventListener("click", () => {
+              navDrawer.classList.add("translate-x-full");
+            });
+          });
+      }
 
-      // Smooth scroll sans afficher de hash dans l'URL
-      document.querySelectorAll("a[data-target]").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const targetId = link.dataset.target;
-          // Si on n'est pas sur la homepage, stocke la cible et redirige
-          if (window.location.pathname !== "/") {
-            sessionStorage.setItem("scrollTo", targetId);
-            window.location.href = "/";
-            return;
-          }
-          // Sinon, scroll direct
-          const section = document.getElementById(targetId);
-          if (section) section.scrollIntoView({ behavior: "smooth" });
+      // Smooth scroll sans hash dans l’URL
+      document
+        .querySelectorAll("a[data-target]")
+        .forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const targetId = link.dataset.target;
+
+            // Si on n'est pas sur la homepage, on stocke puis on redirige
+            if (window.location.pathname !== "/") {
+              sessionStorage.setItem("scrollTo", targetId ?? "");
+              window.location.href = "/";
+              return;
+            }
+
+            const section = document.getElementById(targetId ?? "");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          });
         });
-      });
 
-      // Au chargement, gère redirection via sessionStorage
+      // Scroll vers la section stockée après redirection
       const to = sessionStorage.getItem("scrollTo");
       if (to) {
-        const el = document.getElementById(to);
-        if (el) {
+        const element = document.getElementById(to);
+        if (element) {
           setTimeout(() => {
-            el.scrollIntoView({ behavior: "smooth" });
+            element.scrollIntoView({ behavior: "smooth" });
             sessionStorage.removeItem("scrollTo");
           }, 50);
         }
+      }
+
+      // ===========================
+      // Contact form + snackbar
+      // ===========================
+      const contactForm = document.querySelector(
+        "#contact-form form",
+      );
+      const toast = document.getElementById("contact-toast");
+      const toastText = document.getElementById("contact-toast-text");
+
+      // Affiche un toast de succès ou d'erreur
+      function showToast(message, variant = "success") {
+        if (!toast || !toastText) return;
+
+        toastText.textContent = message;
+
+        toast.classList.remove("hidden", "bg-green-600", "bg-red-600");
+        toast.classList.add(
+          variant === "error" ? "bg-red-600" : "bg-green-600",
+        );
+
+        const existingTimeoutId = toast.dataset.timeoutId;
+        if (existingTimeoutId) {
+          window.clearTimeout(Number(existingTimeoutId));
+        }
+
+        const timeoutId = window.setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 5000);
+
+        toast.dataset.timeoutId = String(timeoutId);
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(contactForm);
+
+          try {
+            const response = await fetch("/api/contact.php", {
+              method: "POST",
+              body: formData,
+            });
+
+            let data = {};
+            try {
+              data = await response.json();
+            } catch (_) {
+              // Réponse non-JSON, on ignore ce point
+            }
+
+            if (!response.ok) {
+              const errorMessage =
+                data?.error ??
+                "Une erreur est survenue, veuillez réessayer.";
+              showToast(errorMessage, "error");
+              return;
+            }
+
+            contactForm.reset();
+            showToast(
+              data?.message ??
+                "Votre message a bien été envoyé.",
+              "success",
+            );
+          } catch (error) {
+            showToast(
+              "Erreur réseau, veuillez réessayer dans quelques instants.",
+              "error",
+            );
+          }
+        });
       }
     </script>
 

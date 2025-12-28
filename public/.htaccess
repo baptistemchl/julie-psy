@@ -1,65 +1,84 @@
-# ────────────────────────────────────────────────────
-# .htaccess optimisé – Astro.js statique + Apache
-# Domaine : www.julie-psy.fr
-# ────────────────────────────────────────────────────
+# =========================================
+# .htaccess – julie-psy.fr (o2switch)
+# SEO + perf + sécurité, sans casser Apache
+# =========================================
 
-RewriteEngine On
-RewriteBase /
+# -----------------------------
+# Réécritures et canonique
+# -----------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-# 1) Force HTTPS + www (canonical non-www → www)
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} !^www\.julie-psy\.fr$ [NC]
-RewriteRule ^ https://www.julie-psy.fr%{REQUEST_URI} [L,R=301]
+  # Laisser passer les challenges Let's Encrypt
+  RewriteRule ^\.well-known/acme-challenge/ - [L]
 
-# 2) Empêcher l’accès direct au cgi-bin
-RewriteRule ^cgi-bin/ - [F,L]
+  # Rediriger /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
 
-# 3) Fichiers par défaut
+  # Forcer HTTPS + www
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\.julie-psy\.fr$ [NC]
+  RewriteRule ^ https://www.julie-psy.fr%{REQUEST_URI} [L,R=301]
+
+  # Bloquer accès à certains dossiers (git, backups…)
+  RewriteRule ^(?:\.git|\.svn|backup|backups|old)/ - [F,L]
+</IfModule>
+
+# -----------------------------
+# Fichier par défaut + 404
+# -----------------------------
 DirectoryIndex index.html
+ErrorDocument 404 /404.html
 
-# 4) Sécurité HTTP Headers
+# Pas de listing de répertoire
+Options -Indexes
+
+# -----------------------------
+# Sécurité : fichiers sensibles
+# -----------------------------
+<FilesMatch "(^\.|\.htaccess|\.htpasswd|\.env|\.ini|\.phps|\.log|composer\.(json|lock)|package(-lock)?\.json|yarn\.lock)$">
+  Require all denied
+</FilesMatch>
+
+# -----------------------------
+# Headers de sécurité
+# -----------------------------
 <IfModule mod_headers.c>
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-Content-Type-Options "nosniff"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "no-referrer-when-downgrade"
-  Header unset ETag
-</IfModule>
-FileETag None
-
-# 5) Compression GZIP
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml application/xml
-  DeflateFilterNote ratio
-  DeflateCompressionLevel 6
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # HSTS : activé car on force déjà le HTTPS
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
-# 6) Browser Caching
+# -----------------------------
+# Cache navigateur (SEO / perf)
+# -----------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
+
+  # Assets statiques
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
   ExpiresByType image/* "access plus 1 year"
   ExpiresByType font/*  "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
+
+  # HTML : pas de cache long
   ExpiresByType text/html "access plus 0 seconds"
+  ExpiresDefault "access plus 1 day"
 </IfModule>
 
-# 7) Bloquer lectures de fichiers sensibles
-<FilesMatch "\.(htaccess|htpasswd|env|ini|phps|log)$">
-  <IfModule mod_authz_core.c>
-    Require all denied
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order allow,deny
-    Deny from all
-  </IfModule>
-</FilesMatch>
-
-# 8) Désactiver listings de répertoires
-Options -Indexes
-
-# 9) SPA fallback (pour client-side routing)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# -----------------------------
+# Compression GZIP
+# (sans DeflateFilterNote qui casse sur o2switch)
+# -----------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
